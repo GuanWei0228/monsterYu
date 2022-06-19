@@ -87,6 +87,33 @@ class MainActivity : AppCompatActivity() {
 
     job = GlobalScope.launch(Dispatchers.Main) {
             while (true) {
+                if(startt == 1)
+                {
+                    sec.text = "3"
+                    delay(1000)
+                    sec.text = "2"
+                    delay(1000)
+                    sec.text = "1"
+                    delay(1000)
+                    sec.text = "GO!"
+                    delay(1000)
+                    sec.text = ""
+                    matkk.text = "癐務攻擊力:"
+                    mheal.text = "癐務血量:"
+                    mdeff.text = "癐務防禦:"
+                    hatkk.text = "主角攻擊力:"
+                    hheal.text = "主角血量:"
+                    hdeff.text = "主角防禦力:"
+                    startt = 0
+                }
+                if(startt == 87) {
+                    matkk.text = ""
+                    mheal.text = ""
+                    mdeff.text = ""
+                    hatkk.text = ""
+                    hheal.text = ""
+                    hdeff.text = ""
+                }
                 binding.btn.setOnClickListener(object : View.OnClickListener {
                     override fun onClick(p0: View?) {
                         attack = !attack  //check是布林值，要先在前面設var check: Boolean = false
@@ -118,8 +145,8 @@ class MainActivity : AppCompatActivity() {
                     binding.mysv.drawSomething(canvas)
                     binding.mysv.holder.unlockCanvasAndPost(canvas)
                     img2.setImageResource(R.drawable.yu2)
-                    delay(300)
-                    img2.setImageResource(R.drawable.mid)
+                    delay(500)
+                    img2.setImageResource(R.drawable.yu3)
                     attack = false
                 }
                 if (check && defence && num == 1) {
@@ -129,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                     img2.setImageResource(R.drawable.yu3)
                     defence = false
                 }
-                delay(300)
+                delay(500)
                 img2.setImageResource(R.drawable.yu1)
 
             }

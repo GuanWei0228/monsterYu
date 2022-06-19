@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "290772544277",
+    "project_id": "finalexam0621",
+    "storage_bucket": "finalexam0621.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290772544277:android:c21c96cf4b82febf2ed71c",
+        "android_client_info": {
+          "package_name": "tw.edu.pu.monsteryu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290772544277-nd2blrdgn6fnldgrn4kpc3o0i8740625.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBseJyGCLdZ4irK_YCLfcVrJ5cyXfdE5ao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "290772544277-nd2blrdgn6fnldgrn4kpc3o0i8740625.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
