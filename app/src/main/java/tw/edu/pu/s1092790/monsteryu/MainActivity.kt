@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
     var hdef: String = ""
     var startt = 87
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
@@ -79,13 +80,19 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                 mper.reset()
                 if(startt == 1)
                 {
+                    mper = MediaPlayer.create(this@MainActivity,R.raw.select01)
                     sec.text = "3"
+                    mper.start()
                     delay(1000)
                     sec.text = "2"
+                    mper.start()
                     delay(1000)
                     sec.text = "1"
+                    mper.start()
+                    mper = MediaPlayer.create(this@MainActivity,R.raw.select02)
                     delay(1000)
-                    sec.text = "GO!"
+                    sec.text = "戰鬥開始!"
+                    mper.start()
                     delay(1000)
                     sec.text = ""
                     matkk.text = "癐務攻擊力:"
@@ -124,7 +131,7 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                         attack = !attack  //check是布林值，要先在前面設var check: Boolean = false
                         if(attack == true)
                         {
-                            num = (Math.random()*2).toInt()
+                            num = (Math.random()*6).toInt()
                         }
                     }
                 })
@@ -138,17 +145,47 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                     }
                 })
 
-                if (check && attack && num == 1) {
+                if (check && attack && (num == 0 || num == 1 || num == 2 || num == 3)) {
                     val canvas: Canvas = binding.mysv.holder.lockCanvas()
                     binding.mysv.drawSomething(canvas)
                     binding.mysv.holder.unlockCanvasAndPost(canvas)
+                    if(num == 0){
+                        mper = MediaPlayer.create(this@MainActivity,R.raw.toyzhome)
+                        mper.start()
+                        delay(800)
+                        mper.reset()
+                        mper = MediaPlayer.create(this@MainActivity,R.raw.hitting1)
+                        mper.start()
+                    }
+                    if(num == 1){
+                        mper = MediaPlayer.create(this@MainActivity,R.raw.toyzf)
+                        mper.start()
+                        delay(1600)
+                        mper.reset()
+                        mper = MediaPlayer.create(this@MainActivity,R.raw.attack1)
+                        mper.start()
+
+                    }
+                    if(num == 2){
+                        mper = MediaPlayer.create(this@MainActivity,R.raw.attack1)
+                        mper.start()
+
+                    }
+                    if(num == 3){
+                        mper = MediaPlayer.create(this@MainActivity,R.raw.attack1)
+                        mper.start()
+
+                    }
                     img2.setImageResource(R.drawable.yu2)
                     mhealth = (Integer.parseInt(mhealth)-(Integer.parseInt(hatk)-Integer.parseInt(mdef))).toString()
                     txv2.text = Integer.parseInt(mhealth).toString()
 
-                    delay(500)
-                    if(Integer.parseInt(mhealth) == 0) {
+                    delay(800)
+                    if(Integer.parseInt(mhealth) <= 0) {
                         img2.setImageResource(R.drawable.yu4)
+                        mper = MediaPlayer.create(this@MainActivity,R.raw.samurai_shouting2)
+                        mper.start()
+                        delay(5000)
                         check = false
                         img1.setImageResource(R.drawable.start)
                         attack = false
@@ -158,19 +195,34 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                         attack = false
                     }
                 }
-                if (check && attack && num == 0) {
+                if (check && attack && (num == 4 || num == 5)) {
                     val canvas: Canvas = binding.mysv.holder.lockCanvas()
                     binding.mysv.drawSomething(canvas)
                     binding.mysv.holder.unlockCanvasAndPost(canvas)
+                    if(num == 4){
+                        mper = MediaPlayer.create(this@MainActivity,R.raw.attack1)
+                        mper.start()
+
+                    }
+                    if(num == 5){
+                        mper = MediaPlayer.create(this@MainActivity,R.raw.hitting1)
+                        mper.start()
+
+                    }
                     img2.setImageResource(R.drawable.yu2)
                     mhealth = (Integer.parseInt(mhealth)-(Integer.parseInt(hatk)-Integer.parseInt(mdef))).toString()
                     txv2.text = Integer.parseInt(mhealth).toString()
+                    mper = MediaPlayer.create(this@MainActivity,R.raw.itai)
+                    mper.start()
+                    delay(800)
 
-                    delay(500)
-
-                    if(Integer.parseInt(mhealth) == 0) {
+                    if(Integer.parseInt(mhealth) <= 0) {
                         img2.setImageResource(R.drawable.yu4)
+                        mper = MediaPlayer.create(this@MainActivity,R.raw.samurai_shouting2)
+                        mper.start()
+                        delay(5000)
                         check = false
+
                         img1.setImageResource(R.drawable.start)
                         attack = false
                     }
@@ -178,7 +230,37 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                         img2.setImageResource(R.drawable.yu3)
                         hhealth = (Integer.parseInt(hhealth)-(Integer.parseInt(matk)-Integer.parseInt(hdef))).toString()
                         txv5.text = Integer.parseInt(hhealth).toString()
-                        delay(500)
+                        if(num == 2){
+                            mper = MediaPlayer.create(this@MainActivity,R.raw.laser1)
+                            mper.start()
+                            delay(600)
+                        }
+                        if(num == 3){
+                            mper = MediaPlayer.create(this@MainActivity,R.raw.shoot1)
+                            mper.start()
+                            delay(600)
+                        }
+                        if(Integer.parseInt(hhealth) <= 0) {
+                            img2.setImageResource(R.drawable.yu3)
+                            if(num == 2){
+                                mper.reset()
+                                mper = MediaPlayer.create(this@MainActivity,R.raw.devil_laughing1)
+                                mper.start()
+                                delay(5000)
+                                img2.setImageResource(R.drawable.yu1)
+                            }
+                            if(num == 3){
+                                mper.reset()
+                                mper = MediaPlayer.create(this@MainActivity,R.raw.coarse_laughing)
+                                mper.start()
+                                delay(5000)
+                                img2.setImageResource(R.drawable.yu1)
+                            }
+                            img1.setImageResource(R.drawable.start)
+                            check = false
+                            attack = false
+
+                        }
                         img2.setImageResource(R.drawable.yu1)
                         attack = false
                     }
@@ -191,13 +273,27 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                     img2.setImageResource(R.drawable.yu3)
                     hhealth = (Integer.parseInt(hhealth)-(Integer.parseInt(matk)-Integer.parseInt(hdef))).toString()
                     txv5.text = Integer.parseInt(hhealth).toString()
-                    delay(500)
-                    if(Integer.parseInt(hhealth) != 0) {
+                    mper = MediaPlayer.create(this@MainActivity,R.raw.bomb)
+                    mper.start()
+                    defscs.text = "防禦失敗"
+                    delay(800)
+                    defscs.text = ""
+                    if(Integer.parseInt(hhealth) > 0) {
                         img2.setImageResource(R.drawable.yu1)
                         defence = false
                     }
                     else{
-                        img2.setImageResource(R.drawable.yu1)
+                        img2.setImageResource(R.drawable.yu3)
+                        if(num == 1 || num == 0){
+                            mper = MediaPlayer.create(this@MainActivity,R.raw.devil_laughing1)
+                            mper.start()
+                            delay(5000)
+                        }
+                        if(num == 3 || num == 2){
+                            mper = MediaPlayer.create(this@MainActivity,R.raw.coarse_laughing)
+                            mper.start()
+                            delay(5000)
+                        }
                         defence = false
                         check = false
                         img1.setImageResource(R.drawable.start)
@@ -210,12 +306,19 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                     binding.mysv.holder.unlockCanvasAndPost(canvas)
                     img2.setImageResource(R.drawable.yu3)
 
+                    mper = MediaPlayer.create(this@MainActivity,R.raw.bomb)
+                    mper.start()
+                    delay(600)
+
+
                     if(Integer.parseInt(hhealth) != 0) {
                         if(Integer.parseInt(matk) != Integer.parseInt(hdef)){
                             hdef = ((Integer.parseInt(hdef)+1)).toString()
                             txv7.text = Integer.parseInt(hdef).toString()
                             defscs.text = "格檔成功，防禦力+1"
-                            delay(500)
+                            mper = MediaPlayer.create(this@MainActivity,R.raw.up)
+                            mper.start()
+                            delay(1200)
                             defscs.text = ""
                         }
                         img2.setImageResource(R.drawable.yu1)
