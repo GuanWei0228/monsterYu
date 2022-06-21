@@ -49,6 +49,18 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                 if (check == false) {
                     img1.setImageResource(R.drawable.start)
                     startt = 87
+                    mhealth = ""
+                    mdef = ""
+                    matk = ""
+                    hhealth = ""
+                    hatk = ""
+                    hdef = ""
+                    txv2.text = ""
+                    txv3.text = ""
+                    txv4.text = ""
+                    txv5.text = ""
+                    txv6.text = ""
+                    txv7.text = ""
                 }
                 else {
                     img1.setImageResource(R.drawable.stop)
@@ -111,7 +123,7 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
 
                     startt = 0
                 }
-                if(startt == 87) {
+                else if(startt == 87){
                     txv2.text = ""
                     txv3.text = ""
                     txv4.text = ""
@@ -124,6 +136,12 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                     hatkk.text = ""
                     hheal.text = ""
                     hdeff.text = ""
+                    mhealth = ""
+                    mdef = ""
+                    matk = ""
+                    hhealth = ""
+                    hatk = ""
+                    hdef = ""
                 }
 
                 binding.btn.setOnClickListener(object : View.OnClickListener {
@@ -186,9 +204,16 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                         mper = MediaPlayer.create(this@MainActivity,R.raw.samurai_shouting2)
                         mper.start()
                         delay(5000)
+                        mhealth = ""
+                        mdef = ""
+                        matk = ""
+                        hhealth = ""
+                        hatk = ""
+                        hdef = ""
                         check = false
                         img1.setImageResource(R.drawable.start)
                         attack = false
+                        startt = 87
                     }
                     else{
                         img2.setImageResource(R.drawable.yu1)
@@ -202,12 +227,10 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                     if(num == 4){
                         mper = MediaPlayer.create(this@MainActivity,R.raw.attack1)
                         mper.start()
-
                     }
                     if(num == 5){
                         mper = MediaPlayer.create(this@MainActivity,R.raw.hitting1)
                         mper.start()
-
                     }
                     img2.setImageResource(R.drawable.yu2)
                     mhealth = (Integer.parseInt(mhealth)-(Integer.parseInt(hatk)-Integer.parseInt(mdef))).toString()
@@ -223,33 +246,40 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                         delay(5000)
                         check = false
 
+                        mhealth = ""
+                        mdef = ""
+                        matk = ""
+                        hhealth = ""
+                        hatk = ""
+                        hdef = ""
                         img1.setImageResource(R.drawable.start)
                         attack = false
+                        startt = 87
                     }
                     else{
                         img2.setImageResource(R.drawable.yu3)
                         hhealth = (Integer.parseInt(hhealth)-(Integer.parseInt(matk)-Integer.parseInt(hdef))).toString()
                         txv5.text = Integer.parseInt(hhealth).toString()
-                        if(num == 2){
+                        if(num == 4){
                             mper = MediaPlayer.create(this@MainActivity,R.raw.laser1)
                             mper.start()
                             delay(600)
                         }
-                        if(num == 3){
+                        if(num == 5){
                             mper = MediaPlayer.create(this@MainActivity,R.raw.shoot1)
                             mper.start()
                             delay(600)
                         }
                         if(Integer.parseInt(hhealth) <= 0) {
                             img2.setImageResource(R.drawable.yu3)
-                            if(num == 2){
+                            if(num == 4){
                                 mper.reset()
                                 mper = MediaPlayer.create(this@MainActivity,R.raw.devil_laughing1)
                                 mper.start()
                                 delay(5000)
                                 img2.setImageResource(R.drawable.yu1)
                             }
-                            if(num == 3){
+                            if(num == 5){
                                 mper.reset()
                                 mper = MediaPlayer.create(this@MainActivity,R.raw.coarse_laughing)
                                 mper.start()
@@ -257,9 +287,17 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                                 img2.setImageResource(R.drawable.yu1)
                             }
                             img1.setImageResource(R.drawable.start)
+                            mhealth = ""
+                            mdef = ""
+                            matk = ""
+                            hhealth = ""
+                            hatk = ""
+                            hdef = ""
+
                             check = false
                             attack = false
 
+                            startt = 87
                         }
                         img2.setImageResource(R.drawable.yu1)
                         attack = false
@@ -294,8 +332,16 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                             mper.start()
                             delay(5000)
                         }
+                        mhealth = ""
+                        mdef = ""
+                        matk = ""
+                        hhealth = ""
+                        hatk = ""
+                        hdef = ""
                         defence = false
                         check = false
+                        startt = 87
+                        img2.setImageResource(R.drawable.yu1)
                         img1.setImageResource(R.drawable.start)
                     }
 
@@ -329,6 +375,7 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener,View
                         img2.setImageResource(R.drawable.yu1)
                         defence = false
                         check = false
+                        startt = 87
                         img1.setImageResource(R.drawable.start)
                     }
                 }
